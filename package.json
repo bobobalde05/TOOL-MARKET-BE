@@ -4,11 +4,39 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "server": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bobobalde05/TOOL-MARKET-BE.git"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.0",
+    "helmet": "^3.21.2",
+    "http-errors": "~1.6.2",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "logger": "0.0.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "~1.9.0",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.3",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "nodemon": "^2.0.7"
   },
   "author": "",
   "license": "ISC",
