@@ -21,12 +21,9 @@ const UserSchema = Schema({
     maxlength: 50,
     unique: true,
   },
-  // organizationName: {
-  //   type: String,
-  //   required: false,
-  //   minlength: 2,
-  //   maxlength: 50,
-  // },
+  avatar: {
+    type: String,
+  },
 
   phone: {
     type: String,
