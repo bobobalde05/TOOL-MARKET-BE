@@ -6,7 +6,6 @@ const AuthHelper = require("./auth");
 const { genSaltSync, hashSync } = bcrypt;
 
 const register = async (req, res) => {
-  console.log("req file", req.file);
   try {
     const { error } = validation.validateUser(req.body);
     if (error) {
@@ -27,24 +26,23 @@ const register = async (req, res) => {
       });
     }
 
-    // Insert a new user
     const salt = genSaltSync(10);
-    const hash = hashSync(password, salt);
+    const hash = hashSync(password, salt); //hash user password
 
-    // ImageModel.findOne({id})
+    // Insert a new user
     const user = new Users({
       firstName,
       phone,
       lastName,
       email,
       avatar,
-      password,
+      hash,
     });
-    await user.save();
-    const userDetails = AuthHelper.Auth.toAuthJSON(user);
+
+    const newUser = await user.save();
     return res.status(200).json({
       message: "success",
-      user: userDetails,
+      newUser,
     });
   } catch (error) {
     return res.status(500).json({
@@ -69,26 +67,27 @@ const login = async (req, res) => {
     const existingUser = await Users.findOne({ email });
 
     if (!existingUser) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(404).json({
+        status: 404,
         message: "invalid email or password",
       });
     }
 
-    const userPassword = await bcrypt.compareSync(
-      password,
-      existingUser.password
-    );
+    // const userPassword = await bcrypt.compareSync(
+    //   password,
+    //   existingUser.password
+    // );
 
-    if (!userPassword) {
+    if (password !== existingUser.password) {
       return res.status(400).json({
         message: "invalid email or password",
       });
     }
 
     return res.status(200).json({
+      status: 200,
       message: "Logged in successfully",
-      user: AuthHelper.Auth.toAuthJSON(existingUser),
+      user: existingUser,
     });
   } catch (error) {
     return res.status(500).json({
