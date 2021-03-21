@@ -35,22 +35,18 @@ const UserSchema = Schema({
     maxlength: 50,
     default: "user",
   },
-  // confirmed: {
-  //   type: Boolean,
-  //   default: false,
-  // },
   password: {
     type: String,
     required: true,
     minlength: 6,
     maxlength: 80,
   },
-  // accountType: {
-  //   type: String,
-  //   required: false,
-  //   minlength: 8,
-  //   maxlength: 14,
-  // },
+  address: {
+    type: String,
+    required: false,
+    minlength: 8,
+    maxlength: 14,
+  },
   // companyWebsite: {
   //   type: String,
   //   required: false,

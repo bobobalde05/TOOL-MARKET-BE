@@ -15,7 +15,7 @@ const register = async (req, res) => {
       });
     }
 
-    const { firstName, lastName, email, phone, password } = req.body;
+    const { firstName, lastName, email, phone, password, address } = req.body;
     const userExist = await Users.findOne({ email });
     const avatar = req.file.path.replace(/\\/g, "/");
 
@@ -36,6 +36,7 @@ const register = async (req, res) => {
       lastName,
       email,
       avatar,
+      address,
       password: hash,
     });
 
