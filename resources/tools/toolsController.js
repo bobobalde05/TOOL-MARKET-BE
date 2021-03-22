@@ -6,7 +6,6 @@ const postTool = async (req, res) => {
     const { tool, phone, rent } = req.body;
 
     const avatar = req.file.path.replace(/\\/g, "/");
-    console.log("req.body", req.file);
     // Insert a new tool
     const toolToAdd = new Tools({
       tool,

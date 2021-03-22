@@ -25,7 +25,7 @@ const ToolSchema = Schema({
   },
   available: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 
