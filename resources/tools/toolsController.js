@@ -30,7 +30,7 @@ const postTool = async (req, res) => {
 
 const getTools = (req, res) => {
   try {
-    Tools.find({}, (err, tools) => {
+    Tools.find({ available: true }, (err, tools) => {
       if (tools.length === 0) {
         return res.status(404).json({
           message: "no tools found",
@@ -49,7 +49,36 @@ const getTools = (req, res) => {
   }
 };
 
+const updateTool = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Tools.findOne({ _id: id }, function (err, result) {
+      if (!result) {
+        return res.sendStatus(404).json({
+          message: "tool not found",
+        });
+      }
+    });
+
+    const updateTool = await Tools.updateOne(
+      { _id: id },
+      { $set: { available: false } }
+    );
+    if (updateTool) {
+      return res.status(200).json({
+        message: "Borrow request sent",
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message || "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   postTool,
   getTools,
+  updateTool,
 };
