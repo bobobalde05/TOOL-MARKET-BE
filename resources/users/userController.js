@@ -7,14 +7,6 @@ const { genSaltSync, hashSync } = bcrypt;
 
 const register = async (req, res) => {
   try {
-    // const { error } = validation.validateUser(req.body);
-    // if (error) {
-    //   return res.status(422).json({
-    //     status: 422,
-    //     error: error.details[0].message,
-    //   });
-    // }
-
     const { firstName, lastName, email, phone, password, address } = req.body;
     const userExist = await Users.findOne({ email });
     const avatar = req.file.path.replace(/\\/g, "/");
