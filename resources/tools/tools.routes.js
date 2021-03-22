@@ -31,6 +31,6 @@ const upload = multer({
 const toolController = require("./toolsController");
 const { postTool } = toolController;
 
-router.post("/register", upload.single("avatar"), postTool);
+router.post("/add", upload.single("avatar"), postTool);
 
 module.exports = router;
