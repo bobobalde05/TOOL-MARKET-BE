@@ -2,7 +2,6 @@ const bcrypt = require("bcryptjs");
 const { v4 } = require("uuid");
 const validation = require("./user.validation");
 const Users = require("./users.model");
-const AuthHelper = require("./auth");
 const { genSaltSync, hashSync } = bcrypt;
 
 const register = async (req, res) => {
