@@ -41,6 +41,6 @@ router.post("/add", upload.single("avatar"), postTool);
 router.get("/", getTools);
 router.put("/update/:id", updateTool);
 router.put("/approve/:id", approval);
-router.put("/pending", getPendingTools);
+router.get("/pending", getPendingTools);
 
 module.exports = router;
