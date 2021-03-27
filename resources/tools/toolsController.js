@@ -103,9 +103,32 @@ const approval = async (req, res) => {
     });
   }
 };
+
+const getPendingTools = (req, res) => {
+  try {
+    Tools.find({ approved: false }, (err, tools) => {
+      if (tools.length === 0) {
+        return res.status(404).json({
+          message: "no tools found",
+        });
+      }
+
+      return res.status(200).json({
+        message: `${tools.length} Toolss(s) found`,
+        tools,
+      });
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message || "Something went wrong",
+    });
+  }
+};
+
 module.exports = {
   postTool,
   getTools,
   updateTool,
   approval,
+  getPendingTools,
 };
