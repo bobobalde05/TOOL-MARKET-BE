@@ -112,7 +112,7 @@ const approval = async (req, res) => {
 
 const getPendingTools = (req, res) => {
   try {
-    Tools.find({ approved: false }, (err, tools) => {
+    Tools.find({ approved: "pending" }, (err, tools) => {
       if (tools.length === 0) {
         return res.status(404).json({
           message: "no tools found",
