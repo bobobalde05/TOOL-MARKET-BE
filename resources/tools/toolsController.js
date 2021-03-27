@@ -90,7 +90,7 @@ const approval = async (req, res) => {
 
     const updateTool = await Tools.updateOne(
       { _id: id },
-      { $set: { approved: true } }
+      { $set: { approved: true, available: true } }
     );
     if (updateTool) {
       return res.status(200).json({
