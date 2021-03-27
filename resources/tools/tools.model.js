@@ -28,8 +28,8 @@ const ToolSchema = Schema({
     default: false,
   },
   approved: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: "pending",
   },
 });
 

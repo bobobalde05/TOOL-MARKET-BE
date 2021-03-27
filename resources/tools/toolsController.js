@@ -78,6 +78,7 @@ const updateTool = async (req, res) => {
 
 const approval = async (req, res) => {
   const { id } = req.params;
+  const { approval } = req.body;
 
   try {
     await Tools.findOne({ _id: id }, function (err, result) {
@@ -90,7 +91,12 @@ const approval = async (req, res) => {
 
     const updateTool = await Tools.updateOne(
       { _id: id },
-      { $set: { approved: true, available: true } }
+      {
+        $set: {
+          approved: approval,
+          available: approval === "approved" ? true : false,
+        },
+      }
     );
     if (updateTool) {
       return res.status(200).json({
