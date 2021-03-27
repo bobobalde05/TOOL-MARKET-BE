@@ -27,6 +27,10 @@ const ToolSchema = Schema({
     type: Boolean,
     default: true,
   },
+  approved: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const ToolModel = mongoose.model("Tool", ToolSchema);

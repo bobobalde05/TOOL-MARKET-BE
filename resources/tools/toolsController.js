@@ -76,8 +76,36 @@ const updateTool = async (req, res) => {
   }
 };
 
+const approval = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await Tools.findOne({ _id: id }, function (err, result) {
+      if (!result) {
+        return res.sendStatus(404).json({
+          message: "tool not found",
+        });
+      }
+    });
+
+    const updateTool = await Tools.updateOne(
+      { _id: id },
+      { $set: { approved: true } }
+    );
+    if (updateTool) {
+      return res.status(200).json({
+        message: "Tool approved",
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message || "Something went wrong",
+    });
+  }
+};
 module.exports = {
   postTool,
   getTools,
   updateTool,
+  approval,
 };

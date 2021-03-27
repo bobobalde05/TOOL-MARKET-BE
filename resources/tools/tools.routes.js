@@ -29,10 +29,11 @@ const upload = multer({
   },
 });
 const toolController = require("./toolsController");
-const { postTool, getTools, updateTool } = toolController;
+const { postTool, getTools, updateTool, approval } = toolController;
 
 router.post("/add", upload.single("avatar"), postTool);
 router.get("/", getTools);
-router.put("/:id", updateTool);
+router.put("/update/:id", updateTool);
+router.put("/approve/:id", approval);
 
 module.exports = router;
