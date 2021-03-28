@@ -77,6 +77,7 @@ const updateTool = async (req, res) => {
 };
 
 const approval = async (req, res) => {
+  console.log("approv", req.body);
   const { id } = req.params;
   const { approval } = req.body;
 

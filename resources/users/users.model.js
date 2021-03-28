@@ -47,14 +47,10 @@ const UserSchema = Schema({
     minlength: 8,
     maxlength: 14,
   },
-  // companyWebsite: {
-  //   type: String,
-  //   required: false,
-  //   minlength: 8,
-  //   maxlength: 50,
-  // },
-  // resetPasswordToken: String,
-  // resetPasswordExpires: Date,
+  status: {
+    type: String,
+    default: "active",
+  },
 });
 
 const UserModel = mongoose.model("User", UserSchema);

@@ -6,6 +6,7 @@ const path = require("path");
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
+// cloudinary config
 cloudinary.config({
   cloud_name: "dhafbrype",
   api_key: "833318421752619",
@@ -26,13 +27,15 @@ const storage = new CloudinaryStorage({
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024 * 2, //file limit
   },
 });
 const userController = require("./userController");
-const { register, login } = userController;
+const { register, login, getUsers, updateUserStatus } = userController;
 
-router.post("/register", upload.single("avatar"), register);
-router.post("/login", login);
+router.post("/register", upload.single("avatar"), register); //signup route
+router.post("/login", login); //login route
+router.get("/", getUsers); //get all users route
+router.put("/update/:id", updateUserStatus);
 
 module.exports = router;
