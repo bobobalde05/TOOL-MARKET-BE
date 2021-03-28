@@ -7,17 +7,20 @@ const connectDB = require("./database");
 const resources = require("./resources");
 const expressMiddlewares = require("./utils/middlewares");
 
-const app = express();
+const app = express(); //instance of express
 
 expressMiddlewares(app);
 
+// body parser
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(resources);
 
+//invoke connection to database
 connectDB();
 
+// Home route
 app.get("/", (req, res, next) => {
   try {
     res.status(200).json({
@@ -28,4 +31,5 @@ app.get("/", (req, res, next) => {
   }
 });
 
+// expose app
 module.exports = app;
