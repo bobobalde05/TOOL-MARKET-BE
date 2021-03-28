@@ -40,10 +40,6 @@
 
 `- PUT /api/v1/tools/approve/:id Admin approve tool.`
 
-## Template UI
-
-You can see a hosted version of the template at [https://bobobalde05.github.io/TOOLS-MARKET-FRONTEND/index.html](https://bobobalde05.github.io/TOOLS-MARKET-FRONTEND/index.html)
-
 ### API
 
 The API is currently hosted at
