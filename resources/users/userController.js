@@ -111,7 +111,7 @@ const login = async (req, res) => {
 
 const getUsers = (req, res) => {
   try {
-    Users.find({}, (err, users) => {
+    Users.find({ userType: "user" }, (err, users) => {
       if (users.length === 0) {
         return res.status(404).json({
           message: "no users found",
