@@ -16,13 +16,13 @@
 
 ## Technologies
 
-- HTML
-- CSS
+- Express
+- Nodejs
 - Javascript
+- MongoDB
+- Nodemon
 
 ## API-ENDPOINTS
-
-**V1**
 
 `- POST /api/v1/users/register Create a new user.`
 
