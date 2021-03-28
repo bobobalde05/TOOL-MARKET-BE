@@ -149,7 +149,7 @@ const updateUserStatus = async (req, res) => {
     );
     if (updateUser) {
       return res.status(200).json({
-        message: "User suspended",
+        message: "User status updated",
       });
     }
   } catch (error) {
